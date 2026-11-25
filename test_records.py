@@ -18,8 +18,10 @@ class TestStudentRecords(unittest.TestCase):
             "102": {"name": "Sneha", "marks": 92, "attendance": 90.0}
         }
         ranked = rank_by_marks(students)
-        self.assertEqual(ranked, "Sneha")
-        self.assertEqual(ranked, 92)
+        # rank_by_marks returns tuples: (marks, name, roll_no, attendance)
+        self.assertEqual(ranked[0][1], "Sneha")
+        self.assertEqual(ranked[0][0], 92)
+        self.assertEqual(ranked[1][1], "Anitha")
 
     def test_file_persistence(self):
         students = {"101": {"name": "Ravi", "marks": 76, "attendance": 72.0}}
